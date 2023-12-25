@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            background-color: #007BFF;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .feedback-panel {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .feedback-panel h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .feedback-panel textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .feedback-panel .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .feedback-panel .submit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+    <header>
+        <h1>BreakDown</h1>
+    </header>
+    <nav>
+        <a href="home.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="serviço.html">Serviços</a>
+        <a href="contato.html">Contato</a>
+        <a href="feedbackR.html">Feedback</a>
+    </nav>
+    <section>
+        <h2>Bem-vindo ao nosso site!</h2>
+        <p>Seu feedback é incrivelmente valioso para nós! Nosso objetivo é proporcionar a melhor experiência possível. Compartilhe suas opiniões conosco e nos ajude a aprimorar nossos serviços. Sua contribuição faz toda a diferença. Obrigado por dedicar um momento para nos ajudar a melhorar!
+        </p>
+        <a href="serviço.html" class="cta-button">Chamada para Ação</a>
+
+        
+        <div class="feedback-panel">
+            <h3>Feedback</h3>
+            <form id="feedbackForm">
+                <textarea name="feedback" id="feedbackText" rows="5" placeholder="Seu feedback..."></textarea>
+                <input type="button" value="Enviar" class="submit-button" onclick="submitFeedback()">
+            </form>
+        </div>
+
+        
+        <div class="feedback-list" id="feedbackList">
+            <h3>Feedbacks Recebidos</h3>
+            
+        </div>
+    </section>
+
+    <script>
+        let feedbacks = []; 
+
+        function submitFeedback() {
+            const feedbackText = document.getElementById('feedbackText').value;
+
+            if (feedbackText.trim() !== '') {
+                feedbacks.push(feedbackText); 
+                showFeedbacks();
+        }
+
+        function showFeedbacks() {
+            const feedbackList = document.getElementById('feedbackList');
+            feedbackList.innerHTML = '<h3>Feedbacks Recebidos</h3>';
+
+            feedbacks.forEach((feedback, index) => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.classList.add('feedback-item');
+                feedbackItem.innerHTML = `<p><strong>Feedback ${index + 1}:</strong> ${feedback}</p>`;
+                feedbackList.appendChild(feedbackItem);
+            });
+        }}
+
+        showFeedbacks(); 
+    </script>
+</body>
+
+</html>
